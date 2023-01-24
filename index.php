@@ -22,10 +22,15 @@ class Movie
     public function getGenres()
     {
         $str = "";
-        foreach ($this->genresType as $genreType) {
-            $str .= $genreType->genre . " ";
+        if (is_array($this->genresType)) {
+            foreach ($this->genresType as $genreType) {
+                $str .= $genreType->genre . " ";
 
+            }
+        } else {
+            $str = $this->genresType->genre;
         }
+
         return $str;
     }
 
@@ -44,7 +49,7 @@ $genres1 = [$genre1, $genre2];
 $genres2 = [$genre1, $genre3];
 
 $movie1 = new Movie("Avengers", "2022-05-03", $genres1);
-$movie2 = new Movie("Superman", "2020-05-03", $genres2);
+$movie2 = new Movie("Superman", "2020-05-03", $genre3);
 $movies = [$movie1, $movie2];
 
 foreach ($movies as $movie) {
