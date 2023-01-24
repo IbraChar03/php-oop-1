@@ -22,8 +22,8 @@ class Movie
     public function getGenres()
     {
         $str = "";
-        foreach ($this as $genresType => $genreType) {
-            $str .= $genreType->genre;
+        foreach ($this->genresType as $genreType) {
+            $str .= $genreType->genre . " ";
 
         }
         return $str;
