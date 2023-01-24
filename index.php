@@ -12,23 +12,20 @@ class Movie
 {
     public $name;
     public $dateRelease;
-    public $genresType;
+    public array $genresType;
     public function __construct($name, $dateRelease, $genresType)
     {
         $this->name = $name;
         $this->dateRelease = $dateRelease;
-        $this->genresType = $genresType;
+        $this->genresType = is_array($genresType) ? $genresType : [$genresType];
     }
     public function getGenres()
     {
         $str = "";
-        if (is_array($this->genresType)) {
-            foreach ($this->genresType as $genreType) {
-                $str .= $genreType->genre . " ";
 
-            }
-        } else {
-            $str = $this->genresType->genre;
+        foreach ($this->genresType as $genreType) {
+            $str .= $genreType->genre . " ";
+
         }
 
         return $str;
@@ -44,6 +41,7 @@ class Movie
 $genre1 = new GenreType("Thriller");
 $genre2 = new GenreType("Horror");
 $genre3 = new GenreType("Action");
+var_dump($genre3);
 
 $genres1 = [$genre1, $genre2];
 
