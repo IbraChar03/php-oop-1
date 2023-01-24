@@ -32,14 +32,21 @@ class Movie
     public function getHtml()
     {
         return "<h1>" . $this->name . "(" . $this->dateRelease . ")" . $this->getGenres() . "</h1>";
-        // $this->genreType->genre
+
     }
 }
 
 $genre1 = new GenreType("Thriller");
 $genre2 = new GenreType("Horror");
+$genre3 = new GenreType("Action");
+
 $genres1 = [$genre1, $genre2];
+$genres2 = [$genre1, $genre3];
 
 $movie1 = new Movie("Avengers", "2022-05-03", $genres1);
+$movie2 = new Movie("Superman", "2020-05-03", $genres2);
+$movies = [$movie1, $movie2];
 
-echo $movie1->getHtml();
+foreach ($movies as $movie) {
+    echo $movie->getHtml();
+}
